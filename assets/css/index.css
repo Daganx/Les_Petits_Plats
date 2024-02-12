@@ -12,7 +12,7 @@ li{
 header{
     width: 100%;
     height: 667px;
-    background-image: url("/assets/images/banner/banner.jpeg");
+    background-image: url("../images/banner/banner.jpeg");
     background-position: center calc(50% - 50px);
     background-size: cover;
     display: flex;
