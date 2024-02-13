@@ -113,6 +113,13 @@ main{
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
+#recipe-time{
+    background: #FFD15B;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-family: 'Manrope', serif;
+}
 #card-content h2{
     margin-top: 32px;
     font-family: Anton, serif;
@@ -121,17 +128,38 @@ main{
 }
 #card-content h3{
     font-size: 12px;
-    font-weight: 300;
+    font-weight: bold;
     letter-spacing: 2px;
     margin-bottom: 16px;
+    color: grey;
 }
 #card-text{
     margin-left: 25px;
     margin-right: 25px;
     font-family: 'Manrope', serif;
 }
+#card-text > p{
+    max-height: 76px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
 #card-text p{
     font-size: 14px;
-    font-weight: 400;
     margin-bottom: 16px;
+}
+#card-text ul{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-row-gap: 20px;
+}
+#card-text li{
+    display: flex;
+    flex-direction: column;
+}
+#card-text span{
+    color: grey;
+    font-size: 14px;
+}
+#card-text ul li p{
+    margin-bottom: 0;
 }

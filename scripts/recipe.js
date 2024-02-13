@@ -1,23 +1,23 @@
 import { recipes } from "../data/recipes.js";
 function generateRecipe() {
-    const firstRecipe = recipes[0];
+    const recipe = recipes[0];
     const recipeContainer = document.createElement('article');
     recipeContainer.setAttribute('id', 'card-content')
     // Crée et ajoute les éléments HTML pour afficher les informations de la recette
     recipeContainer.innerHTML = `
     <div id="card-img">
-        <span id="recipe-time">${firstRecipe.time}min</span>
-        <img class="recipe-image" src="assets/images/recipes/${firstRecipe.image}" alt="${firstRecipe.name}">
+        <span id="recipe-time">${recipe.time}min</span>
+        <img class="recipe-image" src="assets/images/recipes/${recipe.image}" alt="${recipe.name}">
     </div>
     <div id="card-text">
-        <h2>${firstRecipe.name}</h2>
+        <h2 id="recipe-name">${recipe.name}</h2>
         <h3>RECETTE</h3>
-        <p>${firstRecipe.description}</p>
+        <p id="recipe-description">${recipe.description}</p>
         <h3>INGRÉDIENTS</h3>
         <ul>
-            ${firstRecipe.ingredients.map(ingredient => `
+            ${recipe.ingredients.map(ingredient => `
                 <li>
-                    <span class="ingredient-name">${ingredient.ingredient} :</span>
+                    <p class="ingredient-name">${ingredient.ingredient}</p>
                     <span class="ingredient-quantity">${ingredient.quantity ? ' ' + ingredient.quantity + (ingredient.unit ? ' ' + ingredient.unit : '') : ''}</span>
                 </li>
             `).join('')}

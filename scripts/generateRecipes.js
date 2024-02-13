@@ -8,22 +8,25 @@ function generateAllRecipes() {
         const recipeContainer = document.createElement('article');
         recipeContainer.setAttribute('id','card-content');
         recipeContainer.innerHTML = `
-            <div id="card-img">
+        <div id="card-img">
             <span id="recipe-time">${recipe.time}min</span>
             <img class="recipe-image" src="assets/images/recipes/${recipe.image}" alt="${recipe.name}">
         </div>
-        <div>
-            <h2>${recipe.name}</h2>
+        <div id="card-text">
+            <h2 id="recipe-name">${recipe.name}</h2>
             <h3>RECETTE</h3>
-            <p>${recipe.description}</p>
-            <h3>Ingredients:</h3>
+            <p id="recipe-description">${recipe.description}</p>
+            <h3>INGRÉDIENTS</h3>
             <ul>
                 ${recipe.ingredients.map(ingredient => `
-                    <li>${ingredient.ingredient}${ingredient.quantity ? ': ' + ingredient.quantity + (ingredient.unit ? ' ' + ingredient.unit : '') : ''}</li>
-                `).join('')}
-            </ul>
+                <li>
+                    <p class="ingredient-name">${ingredient.ingredient}</p>
+                    <span class="ingredient-quantity">${ingredient.quantity ? ' ' + ingredient.quantity + (ingredient.unit ? ' ' + ingredient.unit : '') : ''}</span>
+                </li>
+            `).join('')}
+        </ul>
         </div>
-        `;
+`;
         cardsContainer.appendChild(recipeContainer);
     });
 }
