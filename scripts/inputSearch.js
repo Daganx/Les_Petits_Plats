@@ -7,7 +7,7 @@ const cardsContainer = document.getElementById('cards-container');
 // Stocke les recettes originales pour les réafficher
 const allRecipes = recipes.slice();
 
-function searchFilterMethod () {
+function searchFilterMethod() {
     inputSearch.addEventListener('input', (event) => {
         const searchTerm = event.target.value.trim().toLowerCase();
 
@@ -25,21 +25,19 @@ function searchFilterMethod () {
                 );
             });
             // Affichez les résultats
-            for (let i = 0; i < filteredRecipes.length; i++) {
-                const recipe = filteredRecipes[i];
+            filteredRecipes.forEach(recipe => {
                 const recipeCard = cardDOM(recipe);
                 cardsContainer.appendChild(recipeCard);
-            }
+            });
         } else {
             // Réaffichez toutes les recettes si la recherche est vide
             cardsContainer.innerHTML = '';
-            for (let i = 0; i < allRecipes.length; i++) {
-                const recipe = allRecipes[i];
+            allRecipes.forEach(recipe => {
                 const recipeCard = cardDOM(recipe);
                 cardsContainer.appendChild(recipeCard);
-            }
+            });
         }
     });
 }
 
-export { searchFilterMethod }
+export { searchFilterMethod };

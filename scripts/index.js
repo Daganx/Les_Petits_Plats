@@ -3,7 +3,7 @@ import {searchFilterMethod} from "./inputSearch.js";
 
 function init(){
     generateAllRecipes();
-    searchFilterMethod()
+    searchFilterMethod();
 }
 
 init();
