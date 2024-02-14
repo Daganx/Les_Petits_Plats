@@ -1,4 +1,4 @@
-const createRecipeCard = (recipe) => {
+const cardDOM = (recipe) => {
     const recipeContainer = document.createElement('article');
     recipeContainer.setAttribute('id', 'card-content');
     // Crée et ajoute les éléments HTML pour afficher les informations de la recette
@@ -26,4 +26,4 @@ const createRecipeCard = (recipe) => {
     return recipeContainer;
 };
 
-export { createRecipeCard };
+export { cardDOM };
