@@ -1,7 +1,8 @@
 import { generateAllRecipes } from './generateRecipes.js';
-
-function init(){
+import { searchForLoop } from "./inputSearch.js";
+function init() {
     generateAllRecipes();
+    searchForLoop();
 }
 
 init();
