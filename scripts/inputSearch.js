@@ -8,6 +8,12 @@ const cardsContainer = document.getElementById('cards-container');
 const allRecipes = recipes.slice();
 
 function searchFilterMethod() {
+    // Affiche le nombre total de recettes au début
+    const totalRecipeCountElement = document.getElementById('total-count');
+    const recipesTotal = document.getElementById('recipes-total')
+    totalRecipeCountElement.textContent = `${allRecipes.length} recettes`;
+    recipesTotal.appendChild(totalRecipeCountElement);
+
     inputSearch.addEventListener('input', (event) => {
         const searchTerm = event.target.value.trim().toLowerCase();
 
@@ -24,6 +30,12 @@ function searchFilterMethod() {
                     recipe.appliance.toLowerCase().includes(searchTerm)
                 );
             });
+            // Affichez le nombre de résultats
+            const resultCountElement = document.getElementById('total-count');
+            const recipesTotal = document.getElementById('recipes-total')
+            resultCountElement.textContent = `${filteredRecipes.length} recettes`;
+            recipesTotal.appendChild(resultCountElement);
+
             // Affichez les résultats
             filteredRecipes.forEach(recipe => {
                 const recipeCard = cardDOM(recipe);
@@ -36,6 +48,11 @@ function searchFilterMethod() {
                 const recipeCard = cardDOM(recipe);
                 cardsContainer.appendChild(recipeCard);
             });
+            // Affiche le nombre total de recettes à la fin
+            const totalRecipeCountElement = document.getElementById('total-count');
+            const recipesTotal = document.getElementById('recipes-total')
+            totalRecipeCountElement.textContent = `${allRecipes.length} recettes`;
+            recipesTotal.appendChild(totalRecipeCountElement);
         }
     });
 }
