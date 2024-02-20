@@ -27,9 +27,14 @@
     </header>
     <main>
       <section id="dropdown-container">
-        <button>Ingrédients</button>
-        <button>Appareils</button>
-        <button>Ustensiles</button>
+        <button id="dropdown-button">Ingrédients</button>
+        <div id="dropdown" class="dropdown-content">
+          <label for="dropdown-search"></label>
+          <input type="search" id="dropdown-search" name="dropdown-search">
+          <ul id="ingredient-list">
+            <!-- Les options seront générées dynamiquement ici -->
+          </ul>
+        </div>
       </section>
       <p id="recipes-total">50 recettes</p>
       <section id="cards-container">
