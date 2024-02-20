@@ -9,7 +9,7 @@ const allRecipes = recipes.slice();
 
 function searchForLoop () {
     const totalCountElement = document.getElementById('total-count');
-    totalCountElement.textContent = recipes.length; // Afficher le nombre total de recettes au chargement de la page
+    totalCountElement.textContent = `${recipes.length} recettes`; // Afficher le nombre total de recettes au chargement de la page
 
     inputSearch.addEventListener('input', (event) => {
         const searchTerm = event.target.value.trim().toLowerCase();
@@ -38,7 +38,7 @@ function searchForLoop () {
                 }
             }
             // Mettre à jour le compteur avec le nombre de correspondances
-            totalCountElement.textContent = matchCount;
+            totalCountElement.textContent = matchCount + ' recettes';
             // Afficher le message d'erreur si aucune correspondance n'a été trouvée
             const errorMessage = document.getElementById('error-search');
             if (!hasMatches) {
@@ -54,7 +54,7 @@ function searchForLoop () {
                 const recipeCard = cardDOM(recipe);
                 cardsContainer.appendChild(recipeCard);
             }
-            totalCountElement.textContent = recipes.length;
+            totalCountElement.textContent = `${recipes.length} recettes`;
             // Cacher le message d'erreur si la recherche est vide
             const errorMessage = document.getElementById('error-search');
             errorMessage.style.display = 'none';
