@@ -7,12 +7,16 @@ const cardsContainer = document.getElementById('cards-container');
 // Stocke les recettes originales pour les réafficher
 const allRecipes = recipes.slice();
 
-function searchForLoop (){
+function searchForLoop () {
+    const totalCountElement = document.getElementById('total-count');
+    totalCountElement.textContent = recipes.length; // Afficher le nombre total de recettes au chargement de la page
+
     inputSearch.addEventListener('input', (event) => {
         const searchTerm = event.target.value.trim().toLowerCase();
+        let hasMatches = false; // Variable pour suivre si des correspondances ont été trouvées
+        let matchCount = 0; // Variable pour compter le nombre de correspondances
 
         if (searchTerm.length >= 3) {
-            // Effacer les résultats précédents
             cardsContainer.innerHTML = '';
             // Parcourir toutes les recettes
             for (let i = 0; i < recipes.length; i++) {
@@ -29,7 +33,18 @@ function searchForLoop (){
                 if (isMatch) {
                     const recipeCard = cardDOM(recipe);
                     cardsContainer.appendChild(recipeCard);
+                    hasMatches = true; // Indiquer qu'au moins une correspondance a été trouvée
+                    matchCount++; // Incrémenter le compteur de correspondances
                 }
+            }
+            // Mettre à jour le compteur avec le nombre de correspondances
+            totalCountElement.textContent = matchCount;
+            // Afficher le message d'erreur si aucune correspondance n'a été trouvée
+            const errorMessage = document.getElementById('error-search');
+            if (!hasMatches) {
+                errorMessage.style.display = 'block';
+            } else {
+                errorMessage.style.display = 'none';
             }
         } else {
             // Réaffichez toutes les recettes si la recherche est vide
@@ -39,8 +54,12 @@ function searchForLoop (){
                 const recipeCard = cardDOM(recipe);
                 cardsContainer.appendChild(recipeCard);
             }
+            totalCountElement.textContent = recipes.length;
+            // Cacher le message d'erreur si la recherche est vide
+            const errorMessage = document.getElementById('error-search');
+            errorMessage.style.display = 'none';
         }
     });
 }
 
-export {searchForLoop}
+export { searchForLoop };
