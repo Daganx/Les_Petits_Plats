@@ -1,7 +1,8 @@
-import { generateAllRecipes } from './generateRecipes.js';
+import { displayAllRecipes } from './generateRecipes.js';
+import { recipes } from "../data/recipes.js";
 
-function init(){
-    generateAllRecipes();
+function initializeApp(){
+    displayAllRecipes(recipes); 
 }
 
-init();
+initializeApp();
