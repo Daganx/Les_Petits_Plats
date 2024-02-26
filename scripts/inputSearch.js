@@ -13,19 +13,29 @@ function filterRecipes(searchTerm) {
         ) {
             filteredRecipes.push(recipe);
         }
-    }
+    } 
     return filteredRecipes;
 }
 
 function searchForLoop(displayRecipes) {
+    const inputSearch = document.getElementById('input-search');
+    const errorSearch = document.getElementById('error-search');
+
     inputSearch.addEventListener('input', (event) => {
         const searchTerm = event.target.value.trim().toLowerCase();
 
         if (searchTerm.length >= 3) {
             const filteredRecipes = filterRecipes(searchTerm);
             displayRecipes(filteredRecipes);
+
+            if (filteredRecipes.length > 0) {
+                errorSearch.style.display = 'none';
+            } else {
+                errorSearch.style.display = 'block';
+            }
         } else {
             displayRecipes(allRecipes);
+            errorSearch.style.display = 'none';
         }
     });
 }
