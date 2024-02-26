@@ -2,7 +2,7 @@ import { recipes } from "../data/recipes.js";
 
 const allRecipes = recipes;
 
-function filterRecipes(searchTerm) {
+function filterRecipesByTerm(searchTerm) {
     return allRecipes.filter(recipe => {
         return (
             recipe.name.toLowerCase().includes(searchTerm) ||
@@ -12,16 +12,18 @@ function filterRecipes(searchTerm) {
     });
 }
 
-function searchFilterMethod(displayRecipes) {
+function handleSearchInput(displayRecipes) {
     const inputSearch = document.getElementById('input-search');
     const errorSearch = document.getElementById('error-search');
+    const recipeCount = document.getElementById('recipes-count');
 
     inputSearch.addEventListener('input', (event) => {
         const searchTerm = event.target.value.trim().toLowerCase();
 
         if (searchTerm.length >= 3) {
-            const filteredRecipes = filterRecipes(searchTerm);
+            const filteredRecipes = filterRecipesByTerm(searchTerm);
             displayRecipes(filteredRecipes);
+            recipeCount.textContent = `${filteredRecipes.length} recettes`;
 
             if (filteredRecipes.length > 0) {
                 errorSearch.style.display = 'none';
@@ -31,8 +33,9 @@ function searchFilterMethod(displayRecipes) {
         } else {
             displayRecipes(allRecipes);
             errorSearch.style.display = 'none';
+            recipeCount.textContent = `${allRecipes.length} recettes`;
         }
     });
 }
 
-export { searchFilterMethod };
+export { handleSearchInput };
