@@ -1,5 +1,5 @@
-import { generateAllRecipes } from './generateRecipes.js';
-import { searchForLoop } from "./inputSearch.js";
+import { displayAllRecipes } from './generateRecipes.js';
+import { handleSearchInput } from "./inputSearch.js";
 import { recipes } from "../data/recipes.js";
 
 function clearContainer() {
@@ -9,12 +9,12 @@ function clearContainer() {
 
 function displayRecipes(recipes) {
     clearContainer();
-    generateAllRecipes(recipes);
+    displayAllRecipes(recipes);
 }
 
-function init(){
-    generateAllRecipes(recipes);
-    searchForLoop(displayRecipes);
+function initializeApp(){
+    displayAllRecipes(recipes);
+    handleSearchInput(displayRecipes);
 }
 
-init();
+initializeApp();

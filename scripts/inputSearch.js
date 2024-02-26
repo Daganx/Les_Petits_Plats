@@ -1,8 +1,8 @@
 import { recipes } from "../data/recipes.js";
 
-const allRecipes = recipes.slice();
+const allRecipes = recipes;
 
-function filterRecipes(searchTerm) {
+function filterRecipesByTerm(searchTerm) {
     const filteredRecipes = [];
     for (let i = 0; i < allRecipes.length; i++) {
         const recipe = allRecipes[i];
@@ -17,16 +17,18 @@ function filterRecipes(searchTerm) {
     return filteredRecipes;
 }
 
-function searchForLoop(displayRecipes) {
+function handleSearchInput(displayRecipes) {
     const inputSearch = document.getElementById('input-search');
     const errorSearch = document.getElementById('error-search');
+    const recipeCount = document.getElementById('recipes-count');
 
     inputSearch.addEventListener('input', (event) => {
         const searchTerm = event.target.value.trim().toLowerCase();
 
         if (searchTerm.length >= 3) {
-            const filteredRecipes = filterRecipes(searchTerm);
+            const filteredRecipes = filterRecipesByTerm(searchTerm);
             displayRecipes(filteredRecipes);
+            recipeCount.textContent = `${filteredRecipes.length} recettes`;
 
             if (filteredRecipes.length > 0) {
                 errorSearch.style.display = 'none';
@@ -36,8 +38,9 @@ function searchForLoop(displayRecipes) {
         } else {
             displayRecipes(allRecipes);
             errorSearch.style.display = 'none';
+            recipeCount.textContent = `${allRecipes.length} recettes`;
         }
     });
 }
 
-export { searchForLoop };
+export { handleSearchInput };

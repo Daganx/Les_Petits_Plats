@@ -93,7 +93,7 @@ main{
     height: 150px;
 }
 
-#recipes-total{
+#recipes-count{
     position: absolute;
     right: 50px;
     top: 40px;
