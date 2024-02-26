@@ -1,7 +1,6 @@
-import { recipes } from "../data/recipes.js";
 import { cardDOM } from "./cardDOM.js";
 
-function generateAllRecipes() {
+function generateAllRecipes(recipes) {
     const cardsContainer = document.getElementById('cards-container');
 
     recipes.forEach(recipe => {
