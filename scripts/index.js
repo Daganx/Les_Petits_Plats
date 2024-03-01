@@ -1,16 +1,19 @@
-import { displayAllRecipes } from './generateRecipes.js';
-import { handleSearchInput } from "./inputSearch.js";
+import { displayRecipes } from './generateRecipes.js';
+import { handleSearchInput, updateRecipeCount } from "./inputSearch.js";
+import { generateIngredientList } from "./filterByIngredients.js";
 import { recipes } from "../data/recipes.js";
 
-function displayRecipes(recipes) {
+function manageDisplayRecipes(recipes) {
     const cardsContainer = document.getElementById('cards-container');
     cardsContainer.innerHTML = '';
-    displayAllRecipes(recipes);
+    displayRecipes(recipes);
 }
 
 function initializeApp(){
-    displayAllRecipes(recipes);
-    handleSearchInput(displayRecipes);
+    displayRecipes(recipes);
+    updateRecipeCount(recipes.length);
+    generateIngredientList();
+    handleSearchInput(manageDisplayRecipes);
 }
 
 initializeApp();
