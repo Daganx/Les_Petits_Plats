@@ -1,15 +1,15 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-li{
+  }
+  
+  li {
     list-style: none;
     padding: 0;
     margin: 0;
-}
-header{
+  }
+  header {
     width: 100%;
     height: 667px;
     background-image: url("../images/banner/banner.jpeg");
@@ -19,49 +19,49 @@ header{
     align-items: center;
     justify-content: center;
     position: relative;
-}
-header > img {
+  }
+  header > img {
     position: absolute;
     top: 50px;
     left: 70px;
     height: 25px;
     width: 207px;
-}
-h1{
+  }
+  h1 {
     text-align: center;
     font-family: Anton, serif;
-    color: #FFD15B;
+    color: #ffd15b;
     font-size: 44px;
     padding-bottom: 32px;
-}
-#input-search{
+  }
+  #input-search {
     display: flex;
     flex-direction: column;
-}
-#input-search input{
+  }
+  #input-search input {
     width: 954px;
     height: 72px;
     border-radius: 10px;
     border: none;
-}
-#input-search input::placeholder{
     padding-left: 48px;
+  }
+  #input-search input::placeholder {
     font-size: 16px;
-    font-family: 'Manrope', serif;
-}
-input[type = 'search']::-webkit-search-cancel-button{
+    font-family: "Manrope", serif;
+  }
+  #input-search input[type="search"]::-webkit-search-cancel-button {
     padding-left: 100px;
     color: black;
-}
-#search-container{
+  }
+  #search-container {
     position: relative;
-}
-.fa-search{
+  }
+  .fa-search {
     position: absolute;
     right: 10px;
     top: 50%;
     transform: translateY(-50%);
-    background: #1B1B1B;
+    background: #1b1b1b;
     color: white;
     height: 50px;
     width: 50px;
@@ -70,11 +70,12 @@ input[type = 'search']::-webkit-search-cancel-button{
     align-items: center;
     border-radius: 10px;
     font-size: 18px;
-}
-#error-search{
+    cursor: pointer;
+  }
+  #error-search {
     background-color: #eceded;
     text-align: center;
-    font-family: 'Manrope', serif;
+    font-family: "Manrope", serif;
     font-size: large;
     position: absolute;
     bottom: 100px;
@@ -83,102 +84,178 @@ input[type = 'search']::-webkit-search-cancel-button{
     transform: translateX(-50%);
     display: none;
     border-radius: 10px;
-}
-/* MAIN */
-main{
+  }
+  /* MAIN */
+  main {
     background-color: #eceded;
     position: relative;
-}
-#dropdown-container{
-    height: 150px;
-}
-
-#recipes-count{
+  }
+  /* DROPDOWN */
+  #filter-by-tags-container {
+    display: flex;
+    height: 170px;
+    width: 100%;
+    margin-left: 10%;
+    gap: 63px;
+  }
+  #dropdown-container {
+    width: 195px;
+    height: 56px;
+    margin-top: 50px;
+  }
+  #dropdown-button {
+    width: 100%;
+    height: 100%;
+    font-family: "Manrope", serif;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 500;
+    gap: 10px;
+    border: none;
+    background-color: white;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  #dropdown {
+    background-color: white;
+    height: 250px;
+    position: relative;
+    z-index: 2;
+    width: 195px;
+    overflow: auto;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+  /* Pour les navigateurs basés sur WebKit */
+  #dropdown::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Pour Firefox */
+  #dropdown {
+    scrollbar-width: none;
+  }
+  #dropdown-search-ingredients,
+  #dropdown-search-appliances,
+  #dropdown-search-ustensils {
+    width: 163px;
+    height: 36px;
+    padding: 16px;
+    border: lightgrey 1px solid;
+    background-image: url("../images/logo/search.svg");
+    background-repeat: no-repeat;
+    background-position: right 10% bottom 50%;
+  }
+  input:focus,
+  select:focus,
+  button:focus {
+    outline: none;
+  }
+  #ingredients-list {
+    padding: 16px;
+    width: 195px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-family: "Manrope", serif;
+    font-weight: 300;
+    font-size: 16px;
+    gap: 10px;
+    cursor: pointer;
+  }
+  
+  #recipes-count {
     position: absolute;
     right: 50px;
-    top: 40px;
+    top: 60px;
     font-family: Anton, serif;
     font-size: 21px;
-}
-/*CARDS CONTAINER*/
-#cards-container{
+  }
+  /*CARDS CONTAINER*/
+  #cards-container {
     margin-left: 100px;
     margin-right: 100px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-row-gap: 100px;
-}
-#card-content{
+  }
+  #card-content {
     width: 380px;
     height: 730px;
     justify-self: center;
     background-color: white;
     position: relative;
     border-radius: 10px;
-}
-#card-img{
+    cursor: pointer;
+  }
+  #card-img {
     width: 380px;
     height: 250px;
-}
-#recipe-time{
+  }
+  #recipe-time {
     position: absolute;
     top: 10px;
     right: 20px;
-}
-.recipe-image{
+  }
+  .recipe-image {
     height: 100%;
     width: 100%;
     object-fit: cover;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-}
-#recipe-time{
-    background: #FFD15B;
+  }
+  #recipe-time {
+    background: #ffd15b;
     padding: 5px 10px;
     border-radius: 10px;
     font-size: 12px;
-    font-family: 'Manrope', serif;
-}
-#card-content h2{
+    font-family: "Manrope", serif;
+  }
+  #card-content h2 {
     margin-top: 32px;
     font-family: Anton, serif;
     margin-bottom: 32px;
     font-size: 18px;
-}
-#card-content h3{
+  }
+  #card-content h3 {
     font-size: 12px;
     font-weight: bold;
     letter-spacing: 2px;
     margin-bottom: 16px;
     color: grey;
-}
-#card-text{
+  }
+  #card-text {
     margin-left: 25px;
     margin-right: 25px;
-    font-family: 'Manrope', serif;
-}
-#card-text > p{
+    font-family: "Manrope", serif;
+  }
+  #card-text > p {
     max-height: 76px;
     text-overflow: ellipsis;
     overflow: hidden;
-}
-#card-text p{
+  }
+  #card-text p {
     font-size: 14px;
     margin-bottom: 16px;
-}
-#card-text ul{
+  }
+  #card-text ul {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-row-gap: 20px;
-}
-#card-text li{
+  }
+  #card-text li {
     display: flex;
     flex-direction: column;
-}
-#card-text span{
+  }
+  #card-text span {
     color: grey;
     font-size: 14px;
-}
-#card-text ul li p{
+  }
+  #card-text ul li p {
     margin-bottom: 0;
-}
+  }

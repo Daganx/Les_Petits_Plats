@@ -17,30 +17,40 @@ function filterRecipesByTerm(searchTerm) {
     return filteredRecipes;
 }
 
-function handleSearchInput(displayRecipes) {
-    const inputSearch = document.getElementById('input-search');
-    const errorSearch = document.getElementById('error-search');
+function updateRecipeCount(count) {
     const recipeCount = document.getElementById('recipes-count');
+    recipeCount.textContent = `${count} recettes`;
+}
+
+function displayErrorMessage(filteredRecipesLength) {
+    const errorSearch = document.getElementById('error-search');
+
+    if (filteredRecipesLength > 0) {
+        errorSearch.style.display = 'none';
+    } else {
+        errorSearch.style.display = 'block';
+    }
+}
+
+
+function handleSearchInput(manageDisplayRecipes) {
+    const inputSearch = document.getElementById('input-search');
 
     inputSearch.addEventListener('input', (event) => {
         const searchTerm = event.target.value.trim().toLowerCase();
 
         if (searchTerm.length >= 3) {
             const filteredRecipes = filterRecipesByTerm(searchTerm);
-            displayRecipes(filteredRecipes);
-            recipeCount.textContent = `${filteredRecipes.length} recettes`;
-
-            if (filteredRecipes.length > 0) {
-                errorSearch.style.display = 'none';
-            } else {
-                errorSearch.style.display = 'block';
-            }
+            manageDisplayRecipes(filteredRecipes);
+            updateRecipeCount(filteredRecipes.length)
+            displayErrorMessage(filteredRecipes.length);    
         } else {
-            displayRecipes(allRecipes);
-            errorSearch.style.display = 'none';
-            recipeCount.textContent = `${allRecipes.length} recettes`;
+            manageDisplayRecipes(allRecipes);
+            displayErrorMessage(allRecipes.length);
+            updateRecipeCount(allRecipes.length);
+
         }
     });
 }
 
-export { handleSearchInput };
+export { handleSearchInput, updateRecipeCount };

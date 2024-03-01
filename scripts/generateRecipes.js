@@ -1,6 +1,6 @@
 import { cardDOM } from "./cardDOM.js";
 
-function displayAllRecipes(recipes) {
+function displayRecipes(recipes) {
     const cardsContainer = document.getElementById('cards-container');
 
     recipes.forEach(recipe => {
@@ -9,4 +9,4 @@ function displayAllRecipes(recipes) {
     });
 }
 
-export { displayAllRecipes };
+export { displayRecipes };

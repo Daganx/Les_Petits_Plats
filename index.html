@@ -27,19 +27,44 @@
       </section>
     </header>
     <main>
-      <section id="dropdown-container">
-        <button id="dropdown-button">Ingrédients</button>
-        <div id="dropdown" class="dropdown-content">
-          <label for="dropdown-search"></label>
-          <input type="search" id="dropdown-search" name="dropdown-search">
-          <ul id="ingredient-list">
-            <!-- Les options seront générées dynamiquement ici -->
-          </ul>
-        </div>
+
+      <section id="filter-by-tags-container">
+        <section id="dropdown-container">
+          <button id="dropdown-button"><p>Ingrédients</p><i class="fa-solid fa-angle-down"></i></button>
+          <div id="dropdown" class="dropdown-content">
+            <label for="dropdown-search-ingredients"></label>
+            <input type="search" id="dropdown-search-ingredients" name="dropdown-search" />
+            <ul id="ingredients-list">
+              <!-- Les options seront générées dynamiquement ici -->
+            </ul>
+          </div>
+        </section>
+
+        <section id="dropdown-container">
+          <button id="dropdown-button">Appareils<i class="fa-solid fa-angle-down"></i></button>
+          <div id="dropdown" class="dropdown-content">
+            <label for="dropdown-search-appliances"></label>
+            <input type="search" id="dropdown-search-appliances" name="dropdown-search-appliances" />
+            <ul id="appliances-list">
+              <!-- Les options seront générées dynamiquement ici -->
+            </ul>
+          </div>
+        </section>
+
+        <section id="dropdown-container">
+          <button id="dropdown-button">Ustensiles<i class="fa-solid fa-angle-down"></i></button>
+          <div id="dropdown" class="dropdown-content">
+            <label for="dropdown-search-ustensils"></label>
+            <input type="search" id="dropdown-search-ustensils" name="dropdown-search-ustensils" />
+            <ul id="ustensils-list">
+              <!-- Les options seront générées dynamiquement ici -->
+            </ul>
+          </div>
+        </section>
       </section>
       <p id="recipes-count">50 recettes</p>
       <section id="cards-container">
-        <!--cardDOM.js-->
+        <!-- Les cartes de recettes seront générées dynamiquement ici -->
       </section>
     </main>
     <script type="module" src="scripts/index.js"></script>
