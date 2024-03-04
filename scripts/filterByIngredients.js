@@ -1,6 +1,9 @@
 import { recipes } from "../data/recipes.js";
+import { manageDisplayRecipes } from "./index.js";
+import { updateRecipeCount } from "./inputSearch.js";
 
 const allRecipes = recipes;
+const selectedIngredients = new Set();
 
 function generateIngredientList() {
     const ingredientList = document.getElementById('ingredients-list');
@@ -16,23 +19,35 @@ function generateIngredientList() {
         const li = document.createElement('li');
         li.textContent = ingredient;
         ingredientList.appendChild(li);
+        li.addEventListener('click', () => {
+            if (selectedIngredients.has(ingredient)) {
+                // If the ingredient is already selected, deselect it
+                selectedIngredients.delete(ingredient);
+            } else {
+                // Otherwise, add it to the list of selected ingredients
+                selectedIngredients.add(ingredient);
+            }
+            // Update recipe display
+            updateRecipeDisplay(selectedIngredients);
+        });
     });
 }
 
-const dropdownButton = document.getElementById('dropdown-button');
-const dropdownMenu = document.getElementById('dropdown');
+function updateRecipeDisplay(selectedIngredients) {
+    let filteredByIngredients = [];
 
-dropdownButton.addEventListener('click', () => {
-    if (dropdownMenu.style.display === 'none' || dropdownMenu.style.display === '') {
-        dropdownMenu.style.display = 'flex';
-        dropdownButton.style.borderBottomLeftRadius = '0';
-        dropdownButton.style.borderBottomRightRadius = '0';
+    // Filter recipes by selected ingredients
+    if (selectedIngredients.size > 0) {
+        filteredByIngredients = allRecipes.filter(recipe =>
+            Array.from(selectedIngredients).every(ingredient =>
+                recipe.ingredients.some(item => item.ingredient === ingredient)
+            )
+        );
     } else {
-        dropdownMenu.style.display = 'none';
-        dropdownButton.style.borderBottomLeftRadius = '';
-        dropdownButton.style.borderBottomRightRadius = '';
+        filteredByIngredients = allRecipes;
     }
-});
+    updateRecipeCount(filteredByIngredients.length);
+    manageDisplayRecipes(filteredByIngredients);
+}
 
-
-export { generateIngredientList }
+export { generateIngredientList };

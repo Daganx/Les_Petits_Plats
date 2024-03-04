@@ -34,7 +34,7 @@ function displayErrorMessage(filteredRecipesLength) {
 
 
 function handleSearchInput(manageDisplayRecipes) {
-    const inputSearch = document.getElementById('input-search');
+    const inputSearch = document.getElementById('inputSearch');
 
     inputSearch.addEventListener('input', (event) => {
         const searchTerm = event.target.value.trim().toLowerCase();
@@ -43,14 +43,14 @@ function handleSearchInput(manageDisplayRecipes) {
             const filteredRecipes = filterRecipesByTerm(searchTerm);
             manageDisplayRecipes(filteredRecipes);
             updateRecipeCount(filteredRecipes.length)
-            displayErrorMessage(filteredRecipes.length);    
+            displayErrorMessage(filteredRecipes.length);
+            console.log(filteredRecipes);  
         } else {
             manageDisplayRecipes(allRecipes);
             displayErrorMessage(allRecipes.length);
             updateRecipeCount(allRecipes.length);
-
         }
     });
 }
 
-export { handleSearchInput, updateRecipeCount };
+export { handleSearchInput, updateRecipeCount, filterRecipesByTerm };
