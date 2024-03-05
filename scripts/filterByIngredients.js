@@ -29,6 +29,7 @@ function generateIngredientList() {
                 if (activeTag) {
                     activeTagsList.removeChild(activeTag);
                 }
+                li.classList.remove('selected');
             } else {
                 // Ajoutez l'ingrédient à la liste des ingrédients sélectionnés
                 selectedIngredients.add(ingredient);
@@ -36,7 +37,20 @@ function generateIngredientList() {
                 const activeTagsList = document.getElementById('selected-ingredients-list');
                 const span = document.createElement('span');
                 span.textContent = ingredient;
+                // Création de l'icône de fermeture
+                const closeIcon = document.createElement('i');
+                closeIcon.classList.add('fa-solid', 'fa-xmark');
+                closeIcon.textContent = ''; 
+                span.appendChild(closeIcon);
                 activeTagsList.appendChild(span);
+                span.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    selectedIngredients.delete(ingredient);
+                    activeTagsList.removeChild(span);
+                    li.classList.remove('selected');
+                    ApplyFiltersAndUpdateDisplay();
+                });
+                li.classList.add('selected');
             }
             // Appel de la fonction ApplyFiltersAndUpdateDisplay pour mettre à jour l'affichage
             ApplyFiltersAndUpdateDisplay();
