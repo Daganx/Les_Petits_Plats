@@ -1,7 +1,7 @@
+// Création de la structure HTML pour afficher les informations de la recette
 const cardDOM = (recipe) => {
     const recipeContainer = document.createElement('article');
     recipeContainer.setAttribute('id', 'card-content');
-    // Crée et ajoute les éléments HTML pour afficher les informations de la recette
     recipeContainer.innerHTML = `
         <div id="card-img">
             <span id="recipe-time">${recipe.time}min</span>

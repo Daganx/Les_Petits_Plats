@@ -1,10 +1,10 @@
 import { recipes } from "../data/recipes.js";
-import { manageDisplayRecipes } from "./index.js";
-import { updateRecipeCount } from "./inputSearch.js";
+import { ApplyFiltersAndUpdateDisplay } from "./index.js";
 
 const allRecipes = recipes;
 const selectedIngredients = new Set();
 
+// Générer la liste des ingrédients dans le menu déroulant
 function generateIngredientList() {
     const ingredientList = document.getElementById('ingredients-list');
     const ingredients = new Set();
@@ -21,33 +21,37 @@ function generateIngredientList() {
         ingredientList.appendChild(li);
         li.addEventListener('click', () => {
             if (selectedIngredients.has(ingredient)) {
-                // If the ingredient is already selected, deselect it
+                // Si l'ingrédient est déjà sélectionné, retirez-le de la liste des ingrédients sélectionnés
                 selectedIngredients.delete(ingredient);
+                // Retirer l'ingrédient de la liste des tags actifs
+                const activeTagsList = document.getElementById('selected-ingredients-list');
+                const activeTag = Array.from(activeTagsList.children).find(tag => tag.textContent === ingredient);
+                if (activeTag) {
+                    activeTagsList.removeChild(activeTag);
+                }
             } else {
-                // Otherwise, add it to the list of selected ingredients
+                // Ajoutez l'ingrédient à la liste des ingrédients sélectionnés
                 selectedIngredients.add(ingredient);
+                // Ajout de l'ingrédient sélectionné à la liste des tags actifs
+                const activeTagsList = document.getElementById('selected-ingredients-list');
+                const span = document.createElement('span');
+                span.textContent = ingredient;
+                activeTagsList.appendChild(span);
             }
-            // Update recipe display
-            updateRecipeDisplay(selectedIngredients);
+            // Appel de la fonction ApplyFiltersAndUpdateDisplay pour mettre à jour l'affichage
+            ApplyFiltersAndUpdateDisplay();
         });
     });
 }
-
-function updateRecipeDisplay(selectedIngredients) {
-    let filteredByIngredients = [];
-
-    // Filter recipes by selected ingredients
-    if (selectedIngredients.size > 0) {
-        filteredByIngredients = allRecipes.filter(recipe =>
-            Array.from(selectedIngredients).every(ingredient =>
-                recipe.ingredients.some(item => item.ingredient === ingredient)
-            )
-        );
-    } else {
-        filteredByIngredients = allRecipes;
-    }
-    updateRecipeCount(filteredByIngredients.length);
-    manageDisplayRecipes(filteredByIngredients);
+// Filtrez les recettes par ingrédients sélectionnés
+function filterRecipesByIngredients(selectedIngredients, recipes) {
+    return recipes.filter(recipe =>
+        Array.from(selectedIngredients).every(ingredient =>
+            recipe.ingredients.some(item => item.ingredient === ingredient)
+        )
+    );
 }
 
-export { generateIngredientList };
+
+
+export { generateIngredientList, selectedIngredients, filterRecipesByIngredients };

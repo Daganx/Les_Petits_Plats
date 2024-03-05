@@ -1,7 +1,10 @@
 import { recipes } from "../data/recipes.js";
+import { ApplyFiltersAndUpdateDisplay } from "./index.js";
 
 const allRecipes = recipes;
+let searchTerm = '';
 
+// Filtrez les recettes par terme de recherche
 function filterRecipesByTerm(searchTerm) {
     const filteredRecipes = [];
     for (let i = 0; i < allRecipes.length; i++) {
@@ -32,25 +35,21 @@ function displayErrorMessage(filteredRecipesLength) {
     }
 }
 
-
-function handleSearchInput(manageDisplayRecipes) {
+// Gérer l'entrée de recherche 
+function handleSearchInput() {
     const inputSearch = document.getElementById('inputSearch');
 
     inputSearch.addEventListener('input', (event) => {
-        const searchTerm = event.target.value.trim().toLowerCase();
+        searchTerm = event.target.value.trim().toLowerCase();
 
         if (searchTerm.length >= 3) {
-            const filteredRecipes = filterRecipesByTerm(searchTerm);
-            manageDisplayRecipes(filteredRecipes);
-            updateRecipeCount(filteredRecipes.length)
-            displayErrorMessage(filteredRecipes.length);
-            console.log(filteredRecipes);  
+            ApplyFiltersAndUpdateDisplay();
+            displayErrorMessage(filterRecipesByTerm(searchTerm).length);
         } else {
-            manageDisplayRecipes(allRecipes);
-            displayErrorMessage(allRecipes.length);
-            updateRecipeCount(allRecipes.length);
+            ApplyFiltersAndUpdateDisplay();
+            displayErrorMessage(filterRecipesByTerm(searchTerm).length);
         }
     });
 }
 
-export { handleSearchInput, updateRecipeCount, filterRecipesByTerm };
+export { handleSearchInput, updateRecipeCount, filterRecipesByTerm, searchTerm };

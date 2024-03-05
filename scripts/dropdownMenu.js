@@ -1,3 +1,4 @@
+// Gère l'ouverture et la fermeture du menu déroulant
 function handleDropdownClick() {
     const dropdownButton = document.getElementById('dropdown-button');
     const dropdownMenu = document.getElementById('dropdown');
