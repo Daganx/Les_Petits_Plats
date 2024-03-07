@@ -1,15 +1,21 @@
 import { recipes } from "../data/recipes.js";
+import { ApplyFiltersAndUpdateDisplay } from "./index.js";
 
 const allRecipes = recipes;
+let searchTerm = '';
 
 function filterRecipesByTerm(searchTerm) {
-    return allRecipes.filter(recipe => {
-        return (
+    const filteredRecipes = [];
+    allRecipes.forEach(recipe => {
+        if (
             recipe.name.toLowerCase().includes(searchTerm) ||
             recipe.description.toLowerCase().includes(searchTerm) ||
             recipe.ingredients.some(ingredient => ingredient.ingredient.toLowerCase().includes(searchTerm))
-        );
+        ) {
+            filteredRecipes.push(recipe);
+        }
     });
+    return filteredRecipes;
 }
 
 function updateRecipeCount(count) {
@@ -27,25 +33,19 @@ function displayErrorMessage(filteredRecipesLength) {
     }
 }
 
-
-function handleSearchInput(manageDisplayRecipes) {
-    const inputSearch = document.getElementById('input-search');
+// Gérer l'entrée de recherche 
+function handleSearchInput() {
+    const inputSearch = document.getElementById('inputSearch');
 
     inputSearch.addEventListener('input', (event) => {
-        const searchTerm = event.target.value.trim().toLowerCase();
+        searchTerm = event.target.value.trim().toLowerCase();
 
         if (searchTerm.length >= 3) {
-            const filteredRecipes = filterRecipesByTerm(searchTerm);
-            manageDisplayRecipes(filteredRecipes);
-            updateRecipeCount(filteredRecipes.length)
-            displayErrorMessage(filteredRecipes.length);    
+            ApplyFiltersAndUpdateDisplay();
         } else {
-            manageDisplayRecipes(allRecipes);
-            displayErrorMessage(allRecipes.length);
-            updateRecipeCount(allRecipes.length);
-
+            ApplyFiltersAndUpdateDisplay();
         }
     });
 }
 
-export { handleSearchInput,updateRecipeCount };
+export { handleSearchInput, updateRecipeCount, filterRecipesByTerm, searchTerm, displayErrorMessage };

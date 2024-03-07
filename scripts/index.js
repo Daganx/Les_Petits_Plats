@@ -1,19 +1,39 @@
 import { displayRecipes } from './generateRecipes.js';
-import { handleSearchInput, updateRecipeCount } from "./inputSearch.js";
-import { generateIngredientList } from "./filterByIngredients.js";
+import { handleDropdownClick } from "./dropdownMenu.js";
 import { recipes } from "../data/recipes.js";
+import { handleSearchInput, updateRecipeCount,searchTerm, filterRecipesByTerm, displayErrorMessage  } from "./inputSearch.js";
+import { generateIngredientList, selectedIngredients, filterRecipesByIngredients } from "./filterByIngredients.js"; // Importez selectedIngredients
 
-function manageDisplayRecipes(recipes) {
+// Cette fonction affiche les recettes filtrées en effaçant d'abord le conteneur de cartes, puis en affichant les nouvelles recettes
+function displayFilteredRecipes(recipes) {
     const cardsContainer = document.getElementById('cards-container');
     cardsContainer.innerHTML = '';
     displayRecipes(recipes);
 }
+// Cette fonction applique les filtres (termes de recherche et ingrédients sélectionnés) et met à jour l'affichage
+function ApplyFiltersAndUpdateDisplay() {
+    let filteredRecipes = recipes;
+    // Filtrez les recettes par terme de recherche
+    if (searchTerm) {
+        filteredRecipes = filterRecipesByTerm(searchTerm, filteredRecipes);
+    }
+    // Filtrez les recettes par ingrédients sélectionnés
+    if (selectedIngredients.size > 0) {
+        filteredRecipes = filterRecipesByIngredients(selectedIngredients, filteredRecipes);
+    }
+    displayFilteredRecipes(filteredRecipes);
+    updateRecipeCount(filteredRecipes.length);
+    displayErrorMessage(filteredRecipes.length);
+}
 
 function initializeApp(){
     displayRecipes(recipes);
-    updateRecipeCount(recipes.length);
+    handleDropdownClick();
     generateIngredientList();
-    handleSearchInput(manageDisplayRecipes);
+    handleSearchInput();
+    ApplyFiltersAndUpdateDisplay();
 }
 
 initializeApp();
+
+export { ApplyFiltersAndUpdateDisplay };
