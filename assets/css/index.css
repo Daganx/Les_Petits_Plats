@@ -181,19 +181,27 @@ button:focus {
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 5px;
+  display: flex;
+    align-items: center;
 }
 #ingredients-list li.selected {
   background-color: #ffd15b;
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
 #ingredients-list li.selected::after {
-  content: "X";
+  content: "x";
   color: #1b1b1b;
   font-size: 20px;
   float: right;
+  padding-right: 16px;
+  display: flex;
+  align-items: center;
 }
 
 #selected-ingredients-list{
