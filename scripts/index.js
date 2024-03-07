@@ -1,8 +1,8 @@
 import { displayRecipes } from './generateRecipes.js';
-import { handleDropdownClick } from "./dropdownMenu.js";
+import { handleDropdownClick } from "./dropdown/dropdownMenu.js";
 import { recipes } from "../data/recipes.js";
 import { handleSearchInput, updateRecipeCount,searchTerm, filterRecipesByTerm  } from "./inputSearch.js";
-import { generateIngredientList, selectedIngredients, filterRecipesByIngredients } from "./filterByIngredients.js"; // Importez selectedIngredients
+import { generateIngredientList, selectedIngredients, filterRecipesByIngredients } from "./dropdown/filterByIngredients.js"; // Importez selectedIngredients
 
 // Cette fonction affiche les recettes filtrées en effaçant d'abord le conteneur de cartes, puis en affichant les nouvelles recettes
 function displayFilteredRecipes(recipes) {

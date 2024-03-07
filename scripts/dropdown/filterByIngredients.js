@@ -1,6 +1,6 @@
 // Importation des recettes et de la fonction ApplyFiltersAndUpdateDisplay
-import { recipes } from "../data/recipes.js";
-import { ApplyFiltersAndUpdateDisplay } from "./index.js";
+import { recipes } from "../../data/recipes.js";
+import { ApplyFiltersAndUpdateDisplay } from "../index.js";
 
 // Initialisation des variables
 const allRecipes = recipes;
