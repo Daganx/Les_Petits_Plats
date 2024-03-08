@@ -15,13 +15,13 @@
   </head>
   <body>
     <header>
-      <img src="assets/images/logo/Logo.png" alt="logo de les petits plats">
+      <img src="assets/images/logo/Logo.svg" alt="logo de les petits plats">
       <section id="input-search">
         <h1>CHERCHEZ PARMI PLUS DE 1500 RECETTES<br> DU QUOTIDIEN,SIMPLES ET DÉLICIEUSES</h1>
         <div id="search-container">
           <label for="inputSearch"></label>
           <input type="search" name="inputSearch" id="inputSearch" placeholder="Rechercher une recette, un ingrédient, ...">
-          <i id="iconeSearch" class="fas fa-search"></i>
+          <i id="icon-search" class="fas fa-search"></i>
         </div>
         <p id="error-search">Aucune recette trouvée</p>
       </section>
@@ -30,10 +30,10 @@
 
       <section id="filter-by-tags-container">
         <section id="dropdown-container">
-          <button id="dropdown-button"><p>Ingrédients</p><i class="fa-solid fa-angle-down"></i></button>
-          <div id="dropdown" class="dropdown-content">
+          <button id="dropdown-button-ingredients"><p>Ingrédients</p><i class="fa-solid fa-angle-down"></i></button>
+          <div id="dropdown-content-ingredients">
             <label for="dropdown-search-ingredients"></label>
-            <input type="search" id="dropdown-search-ingredients" name="dropdown-search" />
+            <input type="search" id="dropdown-search-ingredients" name="dropdown-search-ingredients" />
             <ul id="ingredients-list">
               <!-- Les options seront générées dynamiquement ici -->
             </ul>
@@ -41,8 +41,8 @@
         </section>
 
         <section id="dropdown-container">
-          <button id="dropdown-button">Appareils<i class="fa-solid fa-angle-down"></i></button>
-          <div id="dropdown" class="dropdown-content">
+          <button id="dropdown-button-appliances">Appareils<i class="fa-solid fa-angle-down"></i></button>
+          <div id="dropdown-content-appliances">
             <label for="dropdown-search-appliances"></label>
             <input type="search" id="dropdown-search-appliances" name="dropdown-search-appliances" />
             <ul id="appliances-list">
@@ -52,8 +52,8 @@
         </section>
 
         <section id="dropdown-container">
-          <button id="dropdown-button">Ustensiles<i class="fa-solid fa-angle-down"></i></button>
-          <div id="dropdown" class="dropdown-content">
+          <button id="dropdown-button-ustensils">Ustensiles<i class="fa-solid fa-angle-down"></i></button>
+          <div id="dropdown-content-ustensils">
             <label for="dropdown-search-ustensils"></label>
             <input type="search" id="dropdown-search-ustensils" name="dropdown-search-ustensils" />
             <ul id="ustensils-list">
@@ -62,8 +62,11 @@
           </div>  
         </section>
       </section>
+
       <div id="selected-ingredients-list"></div>
+
       <p id="recipes-count">recettes</p>
+      
       <section id="cards-container">
         <!-- Les cartes de recettes seront générées dynamiquement ici -->
       </section>

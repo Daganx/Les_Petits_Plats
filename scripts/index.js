@@ -1,8 +1,10 @@
-import { displayRecipes } from './generateRecipes.js';
-import { handleDropdownClick } from "./dropdown/dropdownMenu.js";
 import { recipes } from "../data/recipes.js";
-import { handleSearchInput, updateRecipeCount,searchTerm, filterRecipesByTerm  } from "./inputSearch.js";
+import { displayRecipes } from './generateRecipes.js';
+import { setupDropdowns } from "./dropdown/dropdownMenu.js";
+import { handleSearchInput, updateRecipeCount,searchTerm, filterRecipesByTerm, displayErrorMessage  } from "./inputSearch.js";
 import { generateIngredientList, selectedIngredients, filterRecipesByIngredients } from "./dropdown/filterByIngredients.js"; // Importez selectedIngredients
+import { selectedAppliances, filterRecipesByAppliances, generateApplianceList } from "./dropdown/filterByAppliances.js"; // Importez selectedAppliances
+import { selectedUstensils, filterRecipesByUstensils, generateUstensilList } from "./dropdown/filterByUstensils.js"; // Importez selectedUstensils
 
 // Cette fonction affiche les recettes filtrées en effaçant d'abord le conteneur de cartes, puis en affichant les nouvelles recettes
 function displayFilteredRecipes(recipes) {
@@ -21,16 +23,27 @@ function ApplyFiltersAndUpdateDisplay() {
     if (selectedIngredients.size > 0) {
         filteredRecipes = filterRecipesByIngredients(selectedIngredients, filteredRecipes);
     }
+    // Filtrez les recettes par appareils sélectionnés
+    if (selectedAppliances.size > 0) {
+        filteredRecipes = filterRecipesByAppliances(selectedAppliances, filteredRecipes);
+    }
+    // Filtrez les recettes par ustensiles sélectionnés
+    if (selectedUstensils.size > 0) {
+        filteredRecipes = filterRecipesByUstensils(selectedUstensils, filteredRecipes);
+    }
     displayFilteredRecipes(filteredRecipes);
     updateRecipeCount(filteredRecipes.length);
+    displayErrorMessage(filteredRecipes.length);
 }
 
 function initializeApp(){
     displayRecipes(recipes);
-    handleDropdownClick();
+    setupDropdowns();
     generateIngredientList();
+    generateApplianceList();
+    generateUstensilList();
     handleSearchInput();
-    ApplyFiltersAndUpdateDisplay();
+    // ApplyFiltersAndUpdateDisplay();
 }
 
 initializeApp();

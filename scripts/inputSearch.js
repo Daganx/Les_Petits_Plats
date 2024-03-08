@@ -4,7 +4,7 @@ import { ApplyFiltersAndUpdateDisplay } from "./index.js";
 const allRecipes = recipes;
 let searchTerm = '';
 
-// Filtrez les recettes par terme de recherche
+// Filtrez les recettes par terme de recherche (ALGORITHME BOUCLE FOR sur name, description et ingredients)
 function filterRecipesByTerm(searchTerm) {
     const filteredRecipes = [];
     for (let i = 0; i < allRecipes.length; i++) {
@@ -44,12 +44,12 @@ function handleSearchInput() {
 
         if (searchTerm.length >= 3) {
             ApplyFiltersAndUpdateDisplay();
-            displayErrorMessage(filterRecipesByTerm(searchTerm).length);
+            
         } else {
             ApplyFiltersAndUpdateDisplay();
-            displayErrorMessage(filterRecipesByTerm(searchTerm).length);
+            
         }
     });
 }
 
-export { handleSearchInput, updateRecipeCount, filterRecipesByTerm, searchTerm };
+export { handleSearchInput, updateRecipeCount, filterRecipesByTerm, searchTerm, displayErrorMessage };

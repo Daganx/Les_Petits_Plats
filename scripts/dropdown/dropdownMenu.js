@@ -1,19 +1,37 @@
 // Gère l'ouverture et la fermeture du menu déroulant
-function handleDropdownClick() {
-    const dropdownButton = document.getElementById('dropdown-button');
-    const dropdownMenu = document.getElementById('dropdown');
-
-    dropdownButton.addEventListener('click', () => {
-        if (dropdownMenu.style.display === 'none' || dropdownMenu.style.display === '') {
-            dropdownMenu.style.display = 'flex';
-            dropdownButton.style.borderBottomLeftRadius = '0';
-            dropdownButton.style.borderBottomRightRadius = '0';
-        } else {
-            dropdownMenu.style.display = 'none';
-            dropdownButton.style.borderBottomLeftRadius = '';
-            dropdownButton.style.borderBottomRightRadius = '';
-        }
+function handleDropdownClick(buttonId, menuId) {
+    const dropdownButton = document.getElementById(buttonId);
+    const dropdownMenu = document.getElementById(menuId);
+  
+    dropdownButton.addEventListener("click", () => {
+      if (
+        dropdownMenu.style.display === "none" ||
+        dropdownMenu.style.display === ""
+      ) {
+        dropdownMenu.style.display = "flex";
+        dropdownButton.style.borderBottomLeftRadius = "0";
+        dropdownButton.style.borderBottomRightRadius = "0";
+      } else {
+        dropdownMenu.style.display = "none";
+        dropdownButton.style.borderBottomLeftRadius = "";
+        dropdownButton.style.borderBottomRightRadius = "";
+      }
     });
-}
-
-export { handleDropdownClick }
+  }
+  
+  function setupDropdowns() {
+    handleDropdownClick(
+      "dropdown-button-ingredients",
+      "dropdown-content-ingredients"
+    );
+    handleDropdownClick(
+      "dropdown-button-appliances",
+      "dropdown-content-appliances"
+    );
+    handleDropdownClick(
+      "dropdown-button-ustensils",
+      "dropdown-content-ustensils"
+    );
+  }
+  
+  export { setupDropdowns };
