@@ -1,4 +1,5 @@
 import { recipes } from "../data/recipes.js";
+import { displayRecipes } from "./generateRecipes.js";
 import { ApplyFiltersAndUpdateDisplay } from "./index.js";
 
 const allRecipes = recipes;
@@ -44,10 +45,11 @@ function handleSearchInput() {
 
         if (searchTerm.length >= 3) {
             ApplyFiltersAndUpdateDisplay();
-            
         } else {
-            ApplyFiltersAndUpdateDisplay();
-            
+            // Si la longueur du terme de recherche est inférieure à 3, réaffichez toutes les recettes
+            displayRecipes(recipes);
+            updateRecipeCount(allRecipes.length);
+            displayErrorMessage(allRecipes.length);
         }
     });
 }
