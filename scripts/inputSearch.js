@@ -1,5 +1,4 @@
 import { recipes } from "../data/recipes.js";
-import { displayRecipes } from "./generateRecipes.js";
 import { ApplyFiltersAndUpdateDisplay } from "./index.js";
 
 const allRecipes = recipes;
@@ -39,17 +38,17 @@ function displayErrorMessage(filteredRecipesLength) {
 // Gérer l'entrée de recherche 
 function handleSearchInput() {
     const inputSearch = document.getElementById('inputSearch');
+    const regex = /^[a-z0-9]+$/i; // Regex pour les lettres et les chiffres uniquement
 
     inputSearch.addEventListener('input', (event) => {
-        searchTerm = encodeURIComponent(event.target.value.trim().toLowerCase());
+        searchTerm = event.target.value.trim().toLowerCase();
 
-        if (searchTerm.length >= 3) {
-            ApplyFiltersAndUpdateDisplay();
-        } else {
-            // Si la longueur du terme de recherche est inférieure à 3, réaffichez toutes les recettes
-            displayRecipes(recipes);
-            updateRecipeCount(allRecipes.length);
-            displayErrorMessage(allRecipes.length);
+        if (regex.test(searchTerm)) { // Vérifie si le terme de recherche correspond à la regex
+            if (searchTerm.length >= 3) {
+                ApplyFiltersAndUpdateDisplay();
+            } else {
+                ApplyFiltersAndUpdateDisplay();
+            }
         }
     });
 }

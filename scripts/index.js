@@ -16,7 +16,7 @@ function displayFilteredRecipes(recipes) {
 function ApplyFiltersAndUpdateDisplay() {
     let filteredRecipes = recipes;
     // Filtrez les recettes par terme de recherche
-    if (searchTerm) {
+    if (searchTerm && searchTerm.length >= 3) {
         filteredRecipes = filterRecipesByTerm(searchTerm, filteredRecipes);
     }
     // Filtrez les recettes par ingrédients sélectionnés
