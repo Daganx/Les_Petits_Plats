@@ -43,7 +43,7 @@ function initializeApp(){
     generateApplianceList();
     generateUstensilList();
     handleSearchInput();
-    // ApplyFiltersAndUpdateDisplay();
+    ApplyFiltersAndUpdateDisplay();
 }
 
 initializeApp();
