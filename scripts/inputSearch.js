@@ -35,19 +35,22 @@ function displayErrorMessage(filteredRecipesLength) {
   }
 }
 
-// Gérer l'entrée de recherche
+// Gérer l'entrée de recherche 
 function handleSearchInput() {
-  const inputSearch = document.getElementById("inputSearch");
+    const inputSearch = document.getElementById('inputSearch');
+    const regex = /^[a-z0-9]+$/i; // Regex pour les lettres et les chiffres uniquement
 
-  inputSearch.addEventListener("input", (event) => {
-    searchTerm = encodeURIComponent(event.target.value.trim().toLowerCase());
+    inputSearch.addEventListener('input', (event) => {
+        searchTerm = event.target.value.trim().toLowerCase();
 
-    if (searchTerm.length >= 3) {
-      ApplyFiltersAndUpdateDisplay();
-    } else {
-      ApplyFiltersAndUpdateDisplay();
-    }
-  });
+        if (regex.test(searchTerm)) { // Vérifie si le terme de recherche correspond à la regex
+            if (searchTerm.length >= 3) {
+                ApplyFiltersAndUpdateDisplay();
+            } else {
+                ApplyFiltersAndUpdateDisplay();
+            }
+        }
+    });
 }
 
 export {
