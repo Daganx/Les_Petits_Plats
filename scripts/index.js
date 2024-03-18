@@ -31,6 +31,7 @@ function ApplyFiltersAndUpdateDisplay() {
     if (selectedUstensils.size > 0) {
         filteredRecipes = filterRecipesByUstensils(selectedUstensils, filteredRecipes);
     }
+    // Affiche les recettes filtrées, met à jour le nombre de recettes et affiche un message d'erreur si aucune recette n'est trouvée 
     displayFilteredRecipes(filteredRecipes);
     updateRecipeCount(filteredRecipes.length);
     displayErrorMessage(filteredRecipes.length);
@@ -43,7 +44,7 @@ function initializeApp(){
     generateApplianceList();
     generateUstensilList();
     handleSearchInput();
-    ApplyFiltersAndUpdateDisplay();
+    updateRecipeCount(recipes.length);
 }
 
 initializeApp();

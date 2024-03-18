@@ -18,7 +18,7 @@ function handleDropdownClick(buttonId, menuId) {
     }
   });
 }
-
+// Gère l'ouverture et la fermeture du menu déroulant
 function setupDropdowns() {
   handleDropdownClick(
     "dropdown-button-ingredients",
