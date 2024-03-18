@@ -19,22 +19,6 @@ function filterRecipesByTerm(searchTerm) {
     } 
     return filteredRecipes;
 }
-
-function updateRecipeCount(count) {
-    const recipeCount = document.getElementById('recipes-count');
-    recipeCount.textContent = `${count} recettes`;
-}
-
-function displayErrorMessage(filteredRecipesLength) {
-    const errorSearch = document.getElementById('error-search');
-
-    if (filteredRecipesLength > 0) {
-        errorSearch.style.display = 'none';
-    } else {
-        errorSearch.style.display = 'block';
-    }
-}
-
 // Gérer l'entrée de recherche 
 function handleSearchInput() {
     const inputSearch = document.getElementById('inputSearch');
@@ -51,6 +35,21 @@ function handleSearchInput() {
             }
         }
     });
+}
+// Mettre à jour le nombre de recettes affichées
+function updateRecipeCount(count) {
+    const recipeCount = document.getElementById('recipes-count');
+    recipeCount.textContent = `${count} recettes`;
+}
+// Afficher un message d'erreur si aucune recette ne correspond à la recherche
+function displayErrorMessage(filteredRecipesLength) {
+    const errorSearch = document.getElementById('error-search');
+
+    if (filteredRecipesLength > 0) {
+        errorSearch.style.display = 'none';
+    } else {
+        errorSearch.style.display = 'block';
+    }
 }
 
 export { handleSearchInput, updateRecipeCount, filterRecipesByTerm, searchTerm, displayErrorMessage };
