@@ -100,7 +100,7 @@ function addSearchFunctionality() {
 
       ustensils.forEach((ustensil) => {
         if (ustensil.textContent.toLowerCase().includes(searchTerm)) {
-          ustensil.style.display = "block";
+          ustensil.style.display = "";
         } else {
           ustensil.style.display = "none";
         }

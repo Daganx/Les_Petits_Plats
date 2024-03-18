@@ -101,7 +101,7 @@ function addSearchFunctionality() {
       appliances.forEach((li) => {
         const appliance = li.textContent.toLowerCase();
         if (appliance.includes(searchTerm)) {
-          li.style.display = "block";
+          li.style.display = "";
         } else {
           li.style.display = "none";
         }
