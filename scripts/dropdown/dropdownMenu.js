@@ -18,7 +18,7 @@ function handleDropdownClick(buttonId, menuId) {
       }
     });
   }
-  
+  // Appelle la fonction handleDropdownClick pour chaque menu déroulant
   function setupDropdowns() {
     handleDropdownClick(
       "dropdown-button-ingredients",

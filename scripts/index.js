@@ -36,7 +36,7 @@ function ApplyFiltersAndUpdateDisplay() {
     updateRecipeCount(filteredRecipes.length);
     displayErrorMessage(filteredRecipes.length);
 }
-
+// Cette fonction initialise l'application en affichant les recettes, en configurant les menus déroulants et en générant les listes d'ingrédients, d'appareils et d'ustensiles
 function initializeApp(){
     displayRecipes(recipes);
     setupDropdowns();
