@@ -29,8 +29,8 @@ function handleSearchInput() {
   inputSearch.addEventListener("input", (event) => {
     searchTerm = event.target.value.trim().toLowerCase();
 
-    if (regex.test(searchTerm)) {
-      // Vérifie si le terme de recherche correspond à la regex
+    if (regex.test(searchTerm) || searchTerm === "") {
+      // Vérifie si le terme de recherche correspond à la regex ou si l'input est vide
       ApplyFiltersAndUpdateDisplay();
     }
   });

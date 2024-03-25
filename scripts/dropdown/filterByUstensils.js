@@ -92,20 +92,31 @@ function createActiveTag(ustensil, activeTagsList, li) {
 }
 // Fonction pour ajouter la fonctionnalité de recherche
 function addSearchFunctionality() {
-  document
-    .getElementById("dropdown-search-ustensils")
-    .addEventListener("input", function (event) {
-      const searchTerm = event.target.value.toLowerCase();
-      const ustensils = document.querySelectorAll("#ustensils-list li");
+  const searchInput = document.getElementById("dropdown-search-ustensils");
+  const mainSearchInput = document.getElementById("inputSearch");
 
-      ustensils.forEach((ustensil) => {
-        if (ustensil.textContent.toLowerCase().includes(searchTerm)) {
-          ustensil.style.display = "";
-        } else {
-          ustensil.style.display = "none";
-        }
-      });
+  const updateUstensilList = (searchTerm) => {
+    const ustensils = document.querySelectorAll("#ustensils-list li");
+  
+    ustensils.forEach((ustensil) => {
+      const ustensilName = ustensil.textContent.toLowerCase();
+      if (searchTerm.length >= 3 && !ustensilName.includes(searchTerm) && !ustensil.classList.contains("selected")) {
+        ustensil.style.display = "none";
+      } else {
+        ustensil.style.display = "";
+      }
     });
+  };
+
+  searchInput.addEventListener("input", function (event) {
+    const searchTerm = event.target.value.toLowerCase();
+    updateUstensilList(searchTerm);
+  });
+
+  mainSearchInput.addEventListener("input", function (event) {
+    const searchTerm = event.target.value.toLowerCase();
+    updateUstensilList(searchTerm);
+  });
 }
 // Filtrez les recettes par ustensiles sélectionnés
 function filterRecipesByUstensils(selectedUstensils, recipes) {

@@ -106,20 +106,31 @@ function createActiveTag(ingredient, activeTagsList, li) {
 
 // Fonction pour ajouter la fonctionnalité de recherche
 function addSearchFunctionality() {
-  document
-    .getElementById("dropdown-search-ingredients")
-    .addEventListener("input", function (event) {
-      const searchTerm = event.target.value.toLowerCase();
-      const ingredients = document.querySelectorAll("#ingredients-list li");
+  const searchInput = document.getElementById("dropdown-search-ingredients");
+  const mainSearchInput = document.getElementById("inputSearch");
 
-      ingredients.forEach((ingredient) => {
-        if (ingredient.textContent.toLowerCase().includes(searchTerm)) {
-          ingredient.style.display = "";
-        } else {
-          ingredient.style.display = "none";
-        }
-      });
+  const updateIngredientList = (searchTerm) => {
+    const ingredients = document.querySelectorAll("#ingredients-list li");
+
+    ingredients.forEach((ingredient) => {
+      const ingredientName = ingredient.textContent.toLowerCase();
+      if (searchTerm.length >= 3 && !ingredientName.includes(searchTerm) && !ingredient.classList.contains("selected")) {
+        ingredient.style.display = "none";
+      } else {
+        ingredient.style.display = "";
+      }
     });
+  };
+
+  searchInput.addEventListener("input", function (event) {
+    const searchTerm = event.target.value.toLowerCase();
+    updateIngredientList(searchTerm);
+  });
+
+  mainSearchInput.addEventListener("input", function (event) {
+    const searchTerm = event.target.value.toLowerCase();
+    updateIngredientList(searchTerm);
+  });
 }
 // Filtrez les recettes par ingrédients sélectionnés
 function filterRecipesByIngredients(selectedIngredients, recipes) {

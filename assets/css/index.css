@@ -197,9 +197,13 @@ button:focus {
   gap: 10px;
   cursor: pointer;
 }
-#ingredients-list li:first-child,
-#appliances-list li:first-child,
-#ustensils-list li:first-child {
+#ingredients-list li:first-child{
+  margin-top: 16px;
+}
+#appliances-list li:first-child{
+  margin-top: 16px;
+}
+#ustensils-list li:first-child{
   margin-top: 16px;
 }
 
